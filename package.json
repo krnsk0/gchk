@@ -1,7 +1,7 @@
 {
   "name": "gchk",
-  "version": "1.0.0",
-  "description": "interactive git branch deleter",
+  "version": "1.0.1",
+  "description": "interactive git branch checkout",
   "main": "dist/index.js",
   "scripts": {
     "start": "npm run build && node dist/index.js",
