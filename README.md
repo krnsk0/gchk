@@ -21,7 +21,7 @@
 
 ## What is this?
 
-Interactive CLI tool. Shows a list of local branches; you pick which ones to checkout
+Interactive CLI tool. Shows a list of local branches; you pick which one to check out.
 
 ## Installation
 
