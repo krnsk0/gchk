@@ -10,74 +10,22 @@ vi.mock('prompts', () => {
 });
 
 describe('makeMenu', () => {
-  it('should create a multiselect menu', () => {
-    makeMenu(
-      { branches: [], currentBranch: '', mainBranch: '' },
-      { branches: [] }
-    );
-    expect(prompts).toHaveBeenCalledWith(
-      expect.objectContaining({
-        type: 'multiselect',
-      })
-    );
-  });
-
   it('should invoke prompts with the right choices given some git branches', () => {
     const branches: GitBranchOutput = {
       branches: ['test0', 'test1', 'test2'],
-      currentBranch: '',
-      mainBranch: '',
+      currentBranch: 'test1',
     };
-    makeMenu(branches, { branches: [] });
-    expect(prompts).toHaveBeenCalledWith(
-      expect.objectContaining({
-        choices: [
-          { title: 'test0', value: 'test0', disabled: false, selected: false },
-          { title: 'test1', value: 'test1', disabled: false, selected: false },
-          { title: 'test2', value: 'test2', disabled: false, selected: false },
-        ],
-      })
-    );
-  });
-
-  it('should disable the current branch', () => {
-    const branches: GitBranchOutput = {
-      branches: ['test0', 'test1', 'test2'],
-      currentBranch: 'test0',
-      mainBranch: '',
-    };
-    makeMenu(branches, { branches: [] });
-    expect(prompts).toHaveBeenCalledWith(
-      expect.objectContaining({
-        choices: [
-          { title: 'test0', value: 'test0', disabled: true, selected: false },
-          { title: 'test1', value: 'test1', disabled: false, selected: false },
-          { title: 'test2', value: 'test2', disabled: false, selected: false },
-        ],
-      })
-    );
-  });
-
-  it('should annotate and select merged branches', () => {
-    const branches: GitBranchOutput = {
-      branches: ['test0', 'test1', 'test2'],
-      currentBranch: '',
-      mainBranch: '',
-    };
-    makeMenu(branches, { branches: ['test1'] });
-    expect(prompts).toHaveBeenCalledWith(
-      expect.objectContaining({
-        choices: [
-          { title: 'test0', value: 'test0', disabled: false, selected: false },
-          {
-            title: 'test1 (merged)',
-            value: 'test1',
-            disabled: false,
-            selected: true,
-          },
-          { title: 'test2', value: 'test2', disabled: false, selected: false },
-        ],
-      })
-    );
+    makeMenu(branches);
+    expect(prompts).toHaveBeenCalledWith({
+      choices: [
+        { title: 'test0', value: 'test0' },
+        { title: 'test1', value: 'test1' },
+        { title: 'test2', value: 'test2' },
+      ],
+      initial: 1,
+      message: 'Which branch should we check out?',
+      name: 'branches',
+      type: 'select',
+    });
   });
 });

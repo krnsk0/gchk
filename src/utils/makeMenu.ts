@@ -13,5 +13,6 @@ export const makeMenu = (gitBranches: GitBranchOutput) => {
         value: choice,
       };
     }),
+    initial: gitBranches.branches.indexOf(gitBranches.currentBranch),
   });
 };

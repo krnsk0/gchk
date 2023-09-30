@@ -43,20 +43,4 @@ describe('getBranches', () => {
     });
     expect(getBranches().currentBranch).toBe('test1');
   });
-
-  describe('should identify the main branch', () => {
-    it('when it is master', () => {
-      (exec as Mock).mockReturnValue({
-        stdout: `master\nmain\ntest1\ntest2`,
-      });
-      expect(getBranches().mainBranch).toBe('master');
-    });
-
-    it('when it is main', () => {
-      (exec as Mock).mockReturnValue({
-        stdout: `main\nmaster\ntest1\ntest2`,
-      });
-      expect(getBranches().mainBranch).toBe('main');
-    });
-  });
 });

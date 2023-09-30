@@ -4,8 +4,6 @@ import { MAIN_BRANCHES } from '../constants';
 export interface GitBranchOutput {
   branches: string[];
   currentBranch: string;
-  // main or master
-  mainBranch: string;
 }
 
 export const getBranches = (): GitBranchOutput => {
@@ -20,7 +18,5 @@ export const getBranches = (): GitBranchOutput => {
       allBranches
         .find((branch) => branch.startsWith('* '))
         ?.replace('* ', '') ?? '',
-    mainBranch:
-      allBranches.find((branch) => MAIN_BRANCHES.includes(branch)) ?? '',
   };
 };
