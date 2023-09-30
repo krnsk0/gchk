@@ -2,6 +2,7 @@ import kleur from 'kleur';
 import { getBranches } from './utils/getBranches';
 import { makeMenu } from './utils/makeMenu';
 import { EXITING } from './strings';
+import { checkoutBranch } from './utils/checkoutBranch';
 
 export const menu = async () => {
   const allBranches = getBranches();
@@ -10,6 +11,6 @@ export const menu = async () => {
     process.exit(1);
   } else {
     const promptResult = await makeMenu(allBranches);
-    console.log(promptResult);
+    checkoutBranch(promptResult.branch);
   }
 };

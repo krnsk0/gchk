@@ -5,7 +5,7 @@ import { MENU_MESSAGE } from '../strings';
 export const makeMenu = (gitBranches: GitBranchOutput) => {
   return prompts({
     type: 'select',
-    name: 'branches',
+    name: 'branch',
     message: MENU_MESSAGE,
     choices: gitBranches.branches.map((choice) => {
       return {

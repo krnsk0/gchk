@@ -24,7 +24,7 @@ describe('makeMenu', () => {
       ],
       initial: 1,
       message: 'Which branch should we check out?',
-      name: 'branches',
+      name: 'branch',
       type: 'select',
     });
   });
