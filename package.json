@@ -1,6 +1,6 @@
 {
   "name": "gchk",
-  "version": "1.0.7",
+  "version": "1.0.0",
   "description": "interactive git branch deleter",
   "main": "dist/index.js",
   "scripts": {
