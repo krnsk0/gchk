@@ -9,13 +9,6 @@ vi.mock('shelljs', () => {
 });
 
 describe('getBranches', () => {
-  it('should exclude master and main', () => {
-    (exec as Mock).mockReturnValue({
-      stdout: `master\nmain\ntest1\ntest2`,
-    });
-    expect(getBranches().branches).toEqual(['test1', 'test2']);
-  });
-
   it('should remove * from current branch', () => {
     (exec as Mock).mockReturnValue({
       stdout: `* test0\ntest1\ntest2`,

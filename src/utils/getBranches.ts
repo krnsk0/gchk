@@ -1,5 +1,4 @@
 import { exec } from 'shelljs';
-import { MAIN_BRANCHES } from '../constants';
 
 export interface GitBranchOutput {
   branches: string[];
@@ -13,7 +12,7 @@ export const getBranches = (): GitBranchOutput => {
   return {
     branches: allBranches
       .map((branch) => branch.replace('* ', ''))
-      .filter((branch) => !MAIN_BRANCHES.includes(branch)),
+      .filter((branch) => branch !== ''),
     currentBranch:
       allBranches
         .find((branch) => branch.startsWith('* '))
